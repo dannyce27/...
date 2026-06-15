@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Hazel 🌹</title>
+  <style>
+    :root {
+      --bg1: #11040f;
+      --bg2: #331026;
+      --pink: #ff7ab6;
+      --rose: #ff3f86;
+      --deep-rose: #9f0f4d;
+      --cream: #fff4df;
+      --paper: #fff8ec;
+      --gold: #ffd27d;
+      --leaf: #45df8a;
+      --leaf-dark: #127344;
+      --text: #fff8fc;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 18% 16%, rgba(255, 122, 182, 0.36), transparent 27%),
+        radial-gradient(circle at 75% 18%, rgba(255, 210, 125, 0.22), transparent 28%),
+        radial-gradient(circle at 52% 92%, rgba(255, 63, 134, 0.32), transparent 36%),
+        linear-gradient(145deg, var(--bg1), var(--bg2) 55%, #08020b);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: radial-gradient(circle at center, black, transparent 78%);
+    }
+
+    .page {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 34px 18px 72px;
+      position: relative;
+    }
+
+    .hero {
+      width: min(1100px, 100%);
+      min-height: 700px;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1.12fr;
+      gap: 28px;
+      align-items: center;
+      padding: 34px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 40px;
+      background: linear-gradient(145deg, rgba(255,255,255,.13), rgba(255,255,255,.045));
+      box-shadow:
+        0 30px 90px rgba(0,0,0,.38),
+        inset 0 1px 0 rgba(255,255,255,.18);
+      backdrop-filter: blur(18px);
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      right: -170px;
+      top: -190px;
+      background: radial-gradient(circle, rgba(255, 122, 182, .3), transparent 65%);
+      filter: blur(5px);
+    }
+
+    .copy {
+      z-index: 3;
+      padding: 18px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 10px 16px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      color: #ffe9f3;
+      font-size: 14px;
+      letter-spacing: .35px;
+      box-shadow: 0 8px 30px rgba(255, 63, 134, .12);
+    }
+
+    h1 {
+      margin-top: 22px;
+      font-size: clamp(44px, 8vw, 86px);
+      line-height: .92;
+      letter-spacing: -3px;
+      text-wrap: balance;
+    }
+
+    h1 span {
+      display: block;
+      background: linear-gradient(90deg, #fff, #ffd4e9, #ff7ab6, #ffd27d);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 10px 30px rgba(255, 63, 134, .28));
+    }
+
+    .subtitle {
+      margin-top: 22px;
+      max-width: 480px;
+      color: rgba(255,248,252,.80);
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .hint {
+      margin-top: 28px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: #fff2df;
+      font-weight: 700;
+      letter-spacing: .2px;
+    }
+
+    .pulse-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 0 rgba(255,210,125,.8);
+      animation: pulse 1.6s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255,210,125,.8); }
+      70% { box-shadow: 0 0 0 18px rgba(255,210,125,0); }
+      100% { box-shadow: 0 0 0 0 rgba(255,210,125,0); }
+    }
+
+    .stage {
+      position: relative;
+      min-height: 620px;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      perspective: 1100px;
+    }
+
+    .glow {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, rgba(255,122,182,.45), transparent 62%),
+        radial-gradient(circle, rgba(255,210,125,.25), transparent 52%);
+      filter: blur(22px);
+      animation: breathe 4s ease-in-out infinite;
+    }
+
+    @keyframes breathe {
+      0%,100% { transform: scale(.96); opacity: .76; }
+      50% { transform: scale(1.08); opacity: 1; }
+    }
+
+    .bouquet-wrap {
+      position: relative;
+      width: 480px;
+      height: 600px;
+      max-width: 92vw;
+      transform-style: preserve-3d;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0) rotate(-1deg); }
+      50% { transform: translateY(-15px) rotate(1.2deg); }
+    }
+
+    .letter-edge {
+      position: absolute;
+      left: 50%;
+      top: 116px;
+      width: 184px;
+      height: 138px;
+      transform: translateX(-18%) rotate(11deg);
+      border: 0;
+      border-radius: 14px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.98), rgba(255,238,210,.98)),
+        repeating-linear-gradient(0deg, transparent 0 17px, rgba(165,15,77,.08) 18px 19px);
+      box-shadow:
+        0 18px 45px rgba(0,0,0,.28),
+        inset 0 0 0 1px rgba(165,15,77,.14);
+      z-index: 3;
+      cursor: pointer;
+      transition: transform .35s ease, top .35s ease, filter .35s ease;
+    }
+
+    .letter-edge::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background:
+        linear-gradient(135deg, transparent 48%, rgba(165,15,77,.10) 49%, transparent 51%),
+        linear-gradient(45deg, transparent 48%, rgba(165,15,77,.10) 49%, transparent 51%);
+    }
+
+    .letter-edge::after {
+      content: "Para Hazel";
+      position: absolute;
+      right: 16px;
+      top: 14px;
+      color: #a50f4d;
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-size: 18px;
+      opacity: .88;
+    }
+
+    .letter-edge:hover {
+      top: 92px;
+      transform: translateX(-18%) rotate(7deg) scale(1.05);
+      filter: drop-shadow(0 0 18px rgba(255,210,125,.48));
+    }
+
+    .click-label {
+      position: absolute;
+      left: 55%;
+      top: 68px;
+      transform: translateX(-50%);
+      z-index: 6;
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.30);
+      border: 1px solid rgba(255,255,255,.15);
+      color: #ffeaf5;
+      font-size: 13px;
+      opacity: .94;
+      pointer-events: none;
+      animation: labelFloat 1.8s ease-in-out infinite;
+    }
+
+    @keyframes labelFloat {
+      0%,100% { transform: translate(-50%, 0); }
+      50% { transform: translate(-50%, -7px); }
+    }
+
+    .stems {
+      position: absolute;
+      left: 50%;
+      top: 252px;
+      width: 260px;
+      height: 282px;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+
+    .stem {
+      position: absolute;
+      bottom: 0;
+      width: 8px;
+      height: 300px;
+      border-radius: 10px;
+      background: linear-gradient(to bottom, #61ed9f, #16824a);
+      transform-origin: bottom center;
+      box-shadow: inset 2px 0 0 rgba(255,255,255,.18);
+    }
+
+    .stem:nth-child(1) { left: 42%; transform: rotate(-25deg); }
+    .stem:nth-child(2) { left: 47%; transform: rotate(-16deg); }
+    .stem:nth-child(3) { left: 51%; transform: rotate(-8deg); }
+    .stem:nth-child(4) { left: 55%; transform: rotate(0deg); }
+    .stem:nth-child(5) { left: 59%; transform: rotate(9deg); }
+    .stem:nth-child(6) { left: 63%; transform: rotate(17deg); }
+    .stem:nth-child(7) { left: 67%; transform: rotate(25deg); }
+
+    .leaf {
+      position: absolute;
+      width: 56px;
+      height: 28px;
+      border-radius: 100% 0 100% 0;
+      background: linear-gradient(135deg, var(--leaf), var(--leaf-dark));
+      transform-origin: left center;
+      box-shadow: inset 0 2px 0 rgba(255,255,255,.17);
+    }
+
+    .leaf.l1 { left: 84px; top: 95px; transform: rotate(-38deg); }
+    .leaf.l2 { left: 142px; top: 128px; transform: rotate(28deg) scaleX(-1); }
+    .leaf.l3 { left: 72px; top: 180px; transform: rotate(-20deg); }
+    .leaf.l4 { left: 154px; top: 202px; transform: rotate(35deg) scaleX(-1); }
+
+    .flowers {
+      position: absolute;
+      inset: 55px 0 auto 0;
+      height: 340px;
+      z-index: 4;
+    }
+
+    .flower {
+      position: absolute;
+      width: var(--size);
+      height: var(--size);
+      left: var(--x);
+      top: var(--y);
+      transform: rotate(var(--r));
+      filter: drop-shadow(0 14px 18px rgba(0,0,0,.22));
+      animation: flowerSway var(--dur) ease-in-out infinite;
+    }
+
+    @keyframes flowerSway {
+      0%,100% { translate: 0 0; rotate: 0deg; }
+      50% { translate: 0 -7px; rotate: 3deg; }
+    }
+
+    .petal {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 42%;
+      height: 58%;
+      border-radius: 55% 55% 45% 45%;
+      background:
+        radial-gradient(circle at 35% 22%, rgba(255,255,255,.34), transparent 20%),
+        linear-gradient(145deg, var(--c1), var(--c2));
+      transform-origin: 50% 92%;
+      box-shadow: inset -5px -8px 13px rgba(120,0,55,.18);
+    }
+
+    .petal:nth-child(1) { transform: translate(-50%, -88%) rotate(0deg); }
+    .petal:nth-child(2) { transform: translate(-50%, -88%) rotate(45deg); }
+    .petal:nth-child(3) { transform: translate(-50%, -88%) rotate(90deg); }
+    .petal:nth-child(4) { transform: translate(-50%, -88%) rotate(135deg); }
+    .petal:nth-child(5) { transform: translate(-50%, -88%) rotate(180deg); }
+    .petal:nth-child(6) { transform: translate(-50%, -88%) rotate(225deg); }
+    .petal:nth-child(7) { transform: translate(-50%, -88%) rotate(270deg); }
+    .petal:nth-child(8) { transform: translate(-50%, -88%) rotate(315deg); }
+
+    .core {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 34%;
+      height: 34%;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      background:
+        radial-gradient(circle at 38% 34%, #fff6c8, #ffd27d 34%, #d97922 70%);
+      box-shadow:
+        inset 0 -4px 8px rgba(123,68,0,.25),
+        0 0 22px rgba(255,210,125,.45);
+    }
+
+    .rose { --c1: #ff8abc; --c2: #c91561; }
+    .rose.alt { --c1: #ffd0df; --c2: #ff4f8e; }
+    .rose.gold { --c1: #fff2b9; --c2: #ffb04d; }
+
+    .rose .inner {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 52%;
+      height: 52%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background:
+        conic-gradient(from 20deg, var(--c2), var(--c1), var(--c2), var(--c1), var(--c2));
+      box-shadow: inset 0 0 14px rgba(70,0,30,.28);
+    }
+
+    .wrapper-paper {
+      position: absolute;
+      left: 50%;
+      bottom: 42px;
+      width: 305px;
+      height: 224px;
+      transform: translateX(-50%);
+      z-index: 2;
+      clip-path: polygon(0 0, 100% 0, 76% 100%, 24% 100%);
+      background:
+        linear-gradient(135deg, rgba(255,240,218,.96), rgba(255,189,204,.92)),
+        radial-gradient(circle at 50% 10%, rgba(255,255,255,.4), transparent 40%);
+      border: 1px solid rgba(255,255,255,.35);
+      box-shadow:
+        0 25px 45px rgba(0,0,0,.25),
+        inset 0 0 0 2px rgba(255,255,255,.18);
+    }
+
+    .ribbon {
+      position: absolute;
+      left: 50%;
+      bottom: 110px;
+      width: 242px;
+      height: 54px;
+      transform: translateX(-50%) rotate(-2deg);
+      z-index: 5;
+      border-radius: 999px;
+      background:
+        linear-gradient(90deg, #9c0d4b, #ff3f86, #9c0d4b);
+      box-shadow:
+        0 12px 25px rgba(0,0,0,.28),
+        inset 0 3px 0 rgba(255,255,255,.25);
+    }
+
+    .ribbon::before,
+    .ribbon::after {
+      content: "";
+      position: absolute;
+      top: 16px;
+      width: 86px;
+      height: 42px;
+      background: #8f0d46;
+      z-index: -1;
+      clip-path: polygon(0 0, 100% 0, 72% 50%, 100% 100%, 0 100%);
+    }
+
+    .ribbon::before {
+      left: -58px;
+      transform: rotate(-10deg);
+    }
+
+    .ribbon::after {
+      right: -58px;
+      transform: scaleX(-1) rotate(-10deg);
+    }
+
+    .ribbon span {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-family: Georgia, serif;
+      font-size: 23px;
+      font-weight: bold;
+      color: #fff6fb;
+      text-shadow: 0 2px 8px rgba(0,0,0,.35);
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #fff7c9;
+      box-shadow: 0 0 18px #ffd27d;
+      animation: twinkle 2.2s ease-in-out infinite;
+      z-index: 6;
+    }
+
+    @keyframes twinkle {
+      0%,100% { transform: scale(.6); opacity: .25; }
+      50% { transform: scale(1.6); opacity: 1; }
+    }
+
+    .sparkle.s1 { left: 82px; top: 110px; animation-delay: .1s; }
+    .sparkle.s2 { right: 92px; top: 152px; animation-delay: .6s; }
+    .sparkle.s3 { left: 140px; top: 50px; animation-delay: 1s; }
+    .sparkle.s4 { right: 132px; top: 62px; animation-delay: 1.4s; }
+
+    .falling-petal {
+      position: fixed;
+      top: -24px;
+      width: 14px;
+      height: 18px;
+      border-radius: 70% 20% 70% 20%;
+      background: linear-gradient(135deg, #ffd3e8, #ff4f95);
+      pointer-events: none;
+      opacity: .75;
+      animation: fall linear forwards;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translate3d(var(--drift), 110vh, 0) rotate(520deg);
+        opacity: 0;
+      }
+    }
+
+    .letter-scene {
+      position: fixed;
+      inset: 0;
+      z-index: 30;
+      display: grid;
+      place-items: center;
+      padding: 22px;
+      background:
+        radial-gradient(circle at center, rgba(255,122,182,.20), transparent 38%),
+        rgba(7, 1, 8, .68);
+      backdrop-filter: blur(14px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .35s ease;
+    }
+
+    .letter-scene.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .desk {
+      width: min(760px, 96vw);
+      min-height: 640px;
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    .close {
+      position: absolute;
+      right: 10px;
+      top: 2px;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 50%;
+      cursor: pointer;
+      background: rgba(255,255,255,.14);
+      color: white;
+      font-size: 28px;
+      z-index: 10;
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .close:hover {
+      transform: rotate(8deg) scale(1.05);
+      background: rgba(255,255,255,.22);
+    }
+
+    .envelope {
+      position: relative;
+      width: min(560px, 88vw);
+      height: 360px;
+      transform-style: preserve-3d;
+      transform: translateY(80px) scale(.92);
+      opacity: 0;
+      transition: transform .75s cubic-bezier(.2,.9,.2,1), opacity .5s ease;
+      filter: drop-shadow(0 36px 46px rgba(0,0,0,.45));
+    }
+
+    .letter-scene.open .envelope {
+      opacity: 1;
+      transform: translateY(45px) scale(1);
+    }
+
+    .env-back {
+      position: absolute;
+      inset: 0;
+      border-radius: 22px;
+      background:
+        linear-gradient(145deg, #ffe9d2, #ffc5d7);
+      box-shadow:
+        inset 0 0 0 2px rgba(255,255,255,.28),
+        inset 0 -18px 38px rgba(165,15,77,.12);
+      overflow: hidden;
+    }
+
+    .env-back::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(32deg, transparent 49.7%, rgba(165,15,77,.16) 50%, transparent 50.3%),
+        linear-gradient(148deg, transparent 49.7%, rgba(165,15,77,.16) 50%, transparent 50.3%);
+    }
+
+    .env-front {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 78%;
+      border-radius: 0 0 22px 22px;
+      background:
+        linear-gradient(145deg, #ffd8e5, #fff0dd);
+      clip-path: polygon(0 0, 50% 58%, 100% 0, 100% 100%, 0 100%);
+      z-index: 5;
+      box-shadow:
+        inset 0 -10px 22px rgba(165,15,77,.08),
+        inset 0 1px 0 rgba(255,255,255,.44);
+    }
+
+    .env-flap {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 62%;
+      transform-origin: top center;
+      transform: rotateX(0deg);
+      background:
+        linear-gradient(180deg, #fff4df, #ffc2d5);
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      z-index: 8;
+      transition: transform 1s cubic-bezier(.2,.8,.1,1) .32s, z-index .1s linear .85s;
+      box-shadow: inset 0 0 0 1px rgba(165,15,77,.10);
+    }
+
+    .letter-scene.opened .env-flap {
+      transform: rotateX(178deg);
+      z-index: 1;
+    }
+
+    .paper-sheet {
+      position: absolute;
+      left: 50%;
+      bottom: 74px;
+      width: min(500px, 78vw);
+      height: 580px;
+      transform: translateX(-50%) translateY(310px) scale(.84);
+      opacity: .98;
+      z-index: 4;
+      border-radius: 24px;
+      color: #551630;
+      background:
+        radial-gradient(circle at 15% 8%, rgba(255,255,255,.9), transparent 28%),
+        repeating-linear-gradient(0deg, transparent 0 33px, rgba(165,15,77,.07) 34px 35px),
+        linear-gradient(145deg, var(--paper), #ffe2ec 60%, #fff1d7);
+      box-shadow:
+        0 26px 55px rgba(0,0,0,.28),
+        inset 0 0 0 1px rgba(165,15,77,.13);
+      padding: 44px 38px 34px;
+      overflow: auto;
+      transition:
+        transform 1.2s cubic-bezier(.18,.95,.2,1) .86s,
+        opacity .7s ease .86s;
+    }
+
+    .letter-scene.opened .paper-sheet {
+      transform: translateX(-50%) translateY(-205px) scale(1);
+      opacity: 1;
+    }
+
+    .paper-sheet::before {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border: 1px solid rgba(165,15,77,.16);
+      border-radius: 18px;
+      pointer-events: none;
+    }
+
+    .paper-sheet h2 {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--deep-rose);
+      font-size: clamp(34px, 6vw, 52px);
+      line-height: 1;
+      margin-bottom: 22px;
+    }
+
+    .paper-sheet p {
+      position: relative;
+      z-index: 1;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(17px, 2.7vw, 21px);
+      line-height: 1.72;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .paper-sheet .final {
+      margin-top: 18px;
+      font-weight: 800;
+      color: #a50f4d;
+      font-size: clamp(20px, 3vw, 25px);
+    }
+
+    .wax {
+      position: absolute;
+      left: 50%;
+      top: 168px;
+      width: 78px;
+      height: 78px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      z-index: 9;
+      background:
+        radial-gradient(circle at 35% 30%, #ff8ab7, #da1a68 48%, #921044 86%);
+      box-shadow:
+        0 12px 22px rgba(0,0,0,.24),
+        inset 0 3px 0 rgba(255,255,255,.24);
+      display: grid;
+      place-items: center;
+      color: #ffeaf3;
+      font-family: Georgia, serif;
+      font-weight: 800;
+      font-size: 28px;
+      transition: opacity .35s ease .65s, transform .45s ease .65s;
+    }
+
+    .letter-scene.opened .wax {
+      opacity: 0;
+      transform: translateX(-50%) scale(.2) rotate(40deg);
+    }
+
+    .letter-instruction {
+      position: absolute;
+      bottom: -82px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      padding: 11px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.10);
+      color: #fff5fb;
+      font-weight: 700;
+      animation: labelFloat 1.8s ease-in-out infinite;
+      transition: opacity .35s ease;
+    }
+
+    .letter-scene.opened .letter-instruction {
+      opacity: 0;
+    }
+
+    .open-real-letter {
+      position: absolute;
+      inset: 0;
+      z-index: 20;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .letter-scene.opened .open-real-letter {
+      pointer-events: none;
+    }
+
+    .mini-heart {
+      position: fixed;
+      width: 14px;
+      height: 14px;
+      pointer-events: none;
+      transform: rotate(45deg);
+      background: #ff4f95;
+      z-index: 40;
+      animation: burst 1.15s ease-out forwards;
+    }
+
+    .mini-heart::before,
+    .mini-heart::after {
+      content: "";
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: inherit;
+    }
+
+    .mini-heart::before { left: -7px; top: 0; }
+    .mini-heart::after { left: 0; top: -7px; }
+
+    @keyframes burst {
+      to {
+        transform: translate(var(--x), var(--y)) rotate(225deg) scale(.2);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 24px 14px;
+        border-radius: 30px;
+      }
+
+      .copy {
+        text-align: center;
+        padding: 12px;
+      }
+
+      .subtitle {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .stage {
+        min-height: 565px;
+      }
+
+      .bouquet-wrap {
+        transform: scale(.92);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .page {
+        padding: 16px 10px 42px;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .stage {
+        min-height: 508px;
+      }
+
+      .bouquet-wrap {
+        width: 390px;
+        height: 520px;
+        transform: scale(.82);
+      }
+
+      .click-label {
+        top: 54px;
+      }
+
+      .desk {
+        min-height: 620px;
+      }
+
+      .envelope {
+        transform: translateY(95px) scale(.9);
+      }
+
+      .letter-scene.open .envelope {
+        transform: translateY(65px) scale(.93);
+      }
+
+      .paper-sheet {
+        height: 560px;
+        padding: 38px 28px 32px;
+      }
+
+      .letter-scene.opened .paper-sheet {
+        transform: translateX(-50%) translateY(-198px) scale(.96);
+      }
+
+      .letter-instruction {
+        bottom: -92px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="copy">
+        <div class="tag"></div>
+        <h1>Para <span>Hazel</span></h1>
+        <p class="subtitle">
+          Hay detalles que no caben en un mensaje normal. Por eso este ramo guarda algo más:
+          una carta escondida que se abre solo para ti.
+        </p>
+        <div class="hint">
+          <span class="pulse-dot"></span>
+          Toca el filo de la carta que sale del ramo.
+        </div>
+      </div>
+
+      <div class="stage" aria-label="Ramo de flores interactivo">
+        <div class="glow"></div>
+
+        <div class="bouquet-wrap">
+          <div class="click-label">Haz click aquí ✨</div>
+
+          <button class="letter-edge" id="openLetter" aria-label="Abrir carta para Hazel"></button>
+
+          <div class="stems">
+            <div class="stem"></div>
+            <div class="stem"></div>
+            <div class="stem"></div>
+            <div class="stem"></div>
+            <div class="stem"></div>
+            <div class="stem"></div>
+            <div class="stem"></div>
+            <div class="leaf l1"></div>
+            <div class="leaf l2"></div>
+            <div class="leaf l3"></div>
+            <div class="leaf l4"></div>
+          </div>
+
+          <div class="flowers">
+            <div class="flower rose" style="--size: 120px; --x: 166px; --y: 35px; --r: -8deg; --dur: 4.8s;">
+              <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+              <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+              <div class="inner"></div><div class="core"></div>
+            </div>
+
+            <div class="flower rose alt" style="--size: 104px; --x: 82px; --y: 92px; --r: -27deg; --dur: 5.2s;">
+              <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+              <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+              <div class="inner"></div><div class="core"></div>
+            </div>
+
+            <div class="flower rose gold" style="--size: 94px; --x: 260px; --y: 100px; --r: 18deg; --dur: 4.5s;">
+              <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+              <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+              <div class="inner"></div><div class="core"></div>
+            </div>
+
+            <div class="flower rose" style="--size: 92px; --x: 45px; --y: 185px; --r: -18deg; --dur: 5.5s;">
+              <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+              <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+              <div class="inner"></div><div class="core"></div>
+            </div>
+
+            <div class="flower rose alt" style="--size: 98px; --x: 305px; --y: 190px; --r: 22deg; --dur: 4.9s;">
+              <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+              <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+              <div class="inner"></div><div class="core"></div>
+            </div>
+
+            <div class="flower rose gold" style="--size: 84px; --x: 185px; --y: 180px; --r: 7deg; --dur: 5.1s;">
+              <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+              <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+              <div class="inner"></div><div class="core"></div>
+            </div>
+          </div>
+
+          <div class="wrapper-paper"></div>
+          <div class="ribbon"><span>Hazel</span></div>
+
+          <div class="sparkle s1"></div>
+          <div class="sparkle s2"></div>
+          <div class="sparkle s3"></div>
+          <div class="sparkle s4"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="letter-scene" id="letterScene" aria-hidden="true">
+    <div class="desk">
+      <button class="close" id="closeLetter" aria-label="Cerrar carta">×</button>
+
+      <div class="envelope" id="envelope">
+        <button class="open-real-letter" id="openRealLetter" aria-label="Abrir sobre"></button>
+
+        <div class="paper-sheet">
+          <h2>Mi Hazel</h2>
+          <p>
+            Desde que te conocí, mi vida mejoró un montón. No fue algo pequeño ni algo que pasó desapercibido:
+            llegaste y, sin darte cuenta, empezaste a hacer que mis días se sintieran más bonitos, más tranquilos
+            y con más sentido.
+          </p>
+          <p>
+            Antes muchas cosas eran normales, repetidas, simples. Pero contigo todo empezó a tener otro color.
+            Una conversación tuya puede cambiarme el ánimo, una risa tuya puede quedarse en mi cabeza todo el día,
+            y un detalle tuyo puede hacerme sentir que tengo algo demasiado bonito en mi vida.
+          </p>
+          <p>
+            Gracias por ser tú, por tu forma de querer, por tu ternura, por tus ocurrencias y por esa manera tan especial
+            que tienes de hacerme sentir feliz. Esta carta es solo un detalle, pero lo que siento por ti es muchísimo más grande
+            que cualquier cosa que pueda escribir aquí.
+          </p>
+          <p class="final">
+            Te amo mucho, Hazel, y nunca se te olvide.
+          </p>
+        </div>
+
+        <div class="env-back"></div>
+        <div class="env-flap"></div>
+        <div class="env-front"></div>
+        <div class="wax">H</div>
+        <div class="letter-instruction">Toca el sobre para abrir la carta 💌</div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const letterScene = document.getElementById("letterScene");
+    const openLetter = document.getElementById("openLetter");
+    const closeLetter = document.getElementById("closeLetter");
+    const openRealLetter = document.getElementById("openRealLetter");
+
+    function openScene() {
+      letterScene.classList.add("open");
+      letterScene.setAttribute("aria-hidden", "false");
+      heartBurst(window.innerWidth / 2, window.innerHeight / 2);
+      setTimeout(() => {
+        letterScene.classList.add("opened");
+        heartBurst(window.innerWidth / 2, window.innerHeight * 0.46);
+      }, 650);
+    }
+
+    function closeScene() {
+      letterScene.classList.remove("open", "opened");
+      letterScene.setAttribute("aria-hidden", "true");
+    }
+
+    openLetter.addEventListener("click", openScene);
+    openRealLetter.addEventListener("click", () => {
+      letterScene.classList.add("opened");
+      heartBurst(window.innerWidth / 2, window.innerHeight * 0.46);
+    });
+
+    closeLetter.addEventListener("click", closeScene);
+
+    letterScene.addEventListener("click", (event) => {
+      if (event.target === letterScene) closeScene();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeScene();
+    });
+
+    function createPetal() {
+      const petal = document.createElement("span");
+      petal.className = "falling-petal";
+      petal.style.left = Math.random() * 100 + "vw";
+      petal.style.animationDuration = 7 + Math.random() * 6 + "s";
+      petal.style.setProperty("--drift", (Math.random() * 220 - 110) + "px");
+      petal.style.transform = "rotate(" + Math.random() * 360 + "deg)";
+      document.body.appendChild(petal);
+      setTimeout(() => petal.remove(), 13000);
+    }
+
+    setInterval(createPetal, 420);
+
+    function heartBurst(originX, originY) {
+      for (let i = 0; i < 38; i++) {
+        const heart = document.createElement("span");
+        heart.className = "mini-heart";
+        heart.style.left = originX + "px";
+        heart.style.top = originY + "px";
+        heart.style.background = i % 3 === 0 ? "#ffd27d" : i % 2 === 0 ? "#ff7ab6" : "#ff3f86";
+        heart.style.setProperty("--x", (Math.random() * 440 - 220) + "px");
+        heart.style.setProperty("--y", (Math.random() * -320 - 35) + "px");
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 1200);
+      }
+    }
+  </script>
+</body>
+</html>
